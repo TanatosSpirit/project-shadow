@@ -1,0 +1,12 @@
+timestamp_col = 0
+delta_time_col = 1
+target_x_col = 2
+target_y_col = 3
+target_course_col = 4
+target_velocity_col = 5
+target_vx_raw_col = 6
+target_vy_raw_col = 7
+target_handle_col = 8
+vehicle_gm_col = 9
+vehicle_yaw_rate_col = 10
+vehicle_velocity_col = 11
