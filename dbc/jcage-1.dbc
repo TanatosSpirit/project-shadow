@@ -1,0 +1,133 @@
+VERSION "created by canmatrix"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: WHEELER ANSCU NOVCU
+VAL_TABLE_ Vtsig_RadarStatus 7 "Undefined" 6 "Undefined" 5 "Undefined" 4 "Undefined" 3 "Undefined" 2 "HW Error" 1 "No Frames" 0 "Valid state" ;
+VAL_TABLE_ Vt_Sig_LoadControl 1 "request to turn on the load" 0 "request to turn off the load" ;
+VAL_TABLE_ Vt_Sig_CloseDoorState 3 "error detected in the circuit" 2 "doors is open" 1 "doors is closed" 0 "unavailable value" ;
+VAL_TABLE_ Vt_Sig_WiperState 3 "error detected in the circuit" 2 "wiper in parking contact" 1 "wiper out parking contact" 0 "unavailable value" ;
+VAL_TABLE_ Vt_Sig_SensorState 3 "error detected in the circuit" 2 "sensor contact close" 1 "sensor contact open" 0 "unavailable value" ;
+VAL_TABLE_ Vt_Sig_LoadState 3 "error detected in the circuit" 2 "the load is turned on" 1 "the load is turned off" 0 "unavailable value" ;
+
+
+BO_ 1520 PATH1: 8 NOVCU
+ SG_ PATH1_Speed : 34|14@1+ (0.01,0) [0|163.83] "ms" Vector__XXX
+ SG_ PATH1_Yaw : 16|18@1+ (0.001,-131) [-131|131.143] "degS" Vector__XXX
+ SG_ PATH1_GradM : 0|16@1+ (0.01,-328) [-328|327.35] "degM" Vector__XXX
+
+BO_ 112 WHEEL_REQ: 2 Vector__XXX
+ SG_ WH_R_Position : 0|10@1+ (1,-512) [-512|511] "bit" Vector__XXX
+ SG_ WH_R_Enable : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1509 ANSCU_ERROR: 8 Vector__XXX
+ SG_ ANSCU_RRW : 48|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+ SG_ ANSCU_RFW : 16|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+ SG_ ANSCU_LRW : 32|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+ SG_ ANSCU_LFW : 0|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+
+BO_ 1873 ANSCU_KA_ERR: 2 ANSCU
+ SG_ ANSCU_ODERR : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANSCU_GPSERR : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANSCU_INSERR : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANSCU_KAC : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1872 ANSCU_WS: 8 ANSCU
+ SG_ ANSCU_RRW : 48|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s"  NOVCU
+ SG_ ANSCU_RFW : 16|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s" Vector__XXX
+ SG_ ANSCU_LRW : 32|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s"  NOVCU
+ SG_ ANSCU_LFW : 0|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s" Vector__XXX
+
+BO_ 672 YRS: 8 Vector__XXX
+ SG_ YRS_YawOdomStat : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ YRS_YawInsStat : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ YRS_YawIns : 16|16@1+ (0.01,-327.6) [-327.6|327.75] "deg/s" Vector__XXX
+ SG_ YRS_YawOdom : 0|16@1+ (0.01,-327.6) [-327.6|327.75] "deg/s"  NOVCU
+
+BO_ 273 WHEEL_1: 4 WHEELER
+ SG_ WH_1_Enabled : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ WH_1_Temperature : 24|8@1+ (1,-40) [-40|215] "deg" Vector__XXX
+ SG_ WH_1_Position : 0|10@1+ (1,-512) [-512|511] "bit" Vector__XXX
+ SG_ WH_1_Error : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ WH_1_Current : 16|8@1+ (0.25,0) [0|63.75] "A" Vector__XXX
+
+
+
+CM_ SG_ 112 WH_R_Position "Requested position for wheel";
+CM_ SG_ 112 WH_R_Enable "Enable request bit 1 for active";
+CM_ SG_ 1509 ANSCU_RRW "�������� �������� ������� ������� ������";
+CM_ SG_ 1509 ANSCU_RFW "�������� �������� ��������� ������� ������";
+CM_ SG_ 1509 ANSCU_LRW "�������� �������� ������� ������ ������";
+CM_ SG_ 1509 ANSCU_LFW "�������� �������� ��������� ������ ������";
+CM_ BO_ 1873 "��������� � ����������������� � �������";
+CM_ SG_ 1873 ANSCU_ODERR "��� ������ �������������� �������";
+CM_ SG_ 1873 ANSCU_GPSERR "��� ������ ���";
+CM_ SG_ 1873 ANSCU_INSERR "��� ������ ���";
+CM_ SG_ 1873 ANSCU_KAC " ������ � �����������������, �������� ������������ �������, ������� ���������������� ��� ������ ������� KAC-���������";
+CM_ SG_ 1872 ANSCU_RRW "�������� �������� ������� ������� ������";
+CM_ SG_ 1872 ANSCU_RFW "�������� �������� ��������� ������� ������";
+CM_ SG_ 1872 ANSCU_LRW "�������� �������� ������� ������ ������";
+CM_ SG_ 1872 ANSCU_LFW "�������� �������� ��������� ������ ������";
+CM_ BO_ 672 "Message holds kinematic information.";
+CM_ SG_ 672 YRS_YawIns "Current YAW rate from INS system.";
+CM_ SG_ 672 YRS_YawOdom "Current YAW rate from ODOM navigation system.";
+CM_ BO_ 273 "Wheeler driver state message";
+CM_ SG_ 273 WH_1_Enabled "CAN control Active now";
+CM_ SG_ 273 WH_1_Position "Current wheel position";
+CM_ SG_ 273 WH_1_Error "Error status";
+CM_ SG_ 273 WH_1_Current "DC motor current";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 10000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","spontaneous","cyclicAndSpontaneous","vector_leerstring";
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "GenMsgCycleTime" 100;
+BA_DEF_DEF_  "GenMsgSendType" "cyclic";
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "GenMsgCycleTime" BO_ 1520 25;
+BA_ "GenMsgCycleTime" BO_ 112 50;
+BA_ "GenMsgCycleTime" BO_ 672 50;
+VAL_ 672 YRS_YawOdomStat 0 "Not Valid" 1 "Valid" 2 "Undefined" 3 "Undefined" ;
+VAL_ 672 YRS_YawInsStat 0 "Not Valid" 1 "Valid" 2 "Undefined" 3 "Undefined" ;
+

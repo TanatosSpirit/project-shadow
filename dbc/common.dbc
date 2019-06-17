@@ -1,0 +1,313 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: WHEELER ANSCU NOVCU RSEND ExternalUnit 
+
+VAL_TABLE_ Vtsig_RadarStatus 7 "Undefined" 6 "Undefined" 5 "Undefined" 4 "Undefined" 3 "Undefined" 2 "HW Error" 1 "No Frames" 0 "Valid state";
+VAL_TABLE_ Vt_Sig_LoadControl 1 "request to turn on the load" 0 "request to turn off the load";
+VAL_TABLE_ Vt_Sig_CloseDoorState 3 "error detected in the circuit" 2 "doors is open" 1 "doors is closed" 0 "unavailable value";
+VAL_TABLE_ Vt_Sig_WiperState 3 "error detected in the circuit" 2 "wiper in parking contact" 1 "wiper out parking contact" 0 "unavailable value";
+VAL_TABLE_ Vt_Sig_SensorState 3 "error detected in the circuit" 2 "sensor contact close" 1 "sensor contact open" 0 "unavailable value";
+VAL_TABLE_ Vt_Sig_LoadState 3 "error detected in the circuit" 2 "the load is turned on" 1 "the load is turned off" 0 "unavailable value";
+
+BO_ 1520 PATH1: 8 NOVCU
+ SG_ PATH1_Speed : 34|14@1+ (0.01,0) [0|163.83] "ms" Vector__XXX
+ SG_ PATH1_Yaw : 16|18@1+ (0.001,-131) [-131|131.143] "degS" Vector__XXX
+ SG_ PATH1_GradM : 0|16@1+ (0.01,-328) [-328|327.35] "degM" Vector__XXX
+
+BO_ 112 WHEEL_REQ: 2 Vector__XXX
+ SG_ WH_R_Position : 0|10@1+ (1,-512) [-512|511] "bit" Vector__XXX
+ SG_ WH_R_Enable : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1509 ANSCU_ERROR: 8 Vector__XXX
+ SG_ ANSCU_RRW : 48|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+ SG_ ANSCU_RFW : 16|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+ SG_ ANSCU_LRW : 32|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+ SG_ ANSCU_LFW : 0|16@1+ (1,0) [0|65535] "cnt" Vector__XXX
+
+BO_ 1873 ANSCU_KA_ERR: 2 ANSCU
+ SG_ ANSCU_ODERR : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANSCU_GPSERR : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANSCU_INSERR : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ANSCU_KAC : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1872 ANSCU_WS: 8 ANSCU
+ SG_ ANSCU_RRW : 48|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s" NOVCU
+ SG_ ANSCU_RFW : 16|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s" Vector__XXX
+ SG_ ANSCU_LRW : 32|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s" NOVCU
+ SG_ ANSCU_LFW : 0|16@1+ (0.0009765625,0) [0|63.9990234375] "m/s" Vector__XXX
+
+BO_ 672 YRS: 8 Vector__XXX
+ SG_ YRS_YawOdomStat : 34|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ YRS_YawInsStat : 32|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ YRS_YawIns : 16|16@1+ (0.01,-327.6) [-327.6|327.75] "deg/s" Vector__XXX
+ SG_ YRS_YawOdom : 0|16@1+ (0.01,-327.6) [-327.6|327.75] "deg/s" NOVCU
+
+BO_ 273 WHEEL_1: 4 WHEELER
+ SG_ WH_1_Enabled : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ WH_1_Temperature : 24|8@1+ (1,-40) [-40|215] "deg" Vector__XXX
+ SG_ WH_1_Position : 0|10@1+ (1,-512) [-512|511] "bit" Vector__XXX
+ SG_ WH_1_Error : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ WH_1_Current : 16|8@1+ (0.25,0) [0|63.75] "A" Vector__XXX
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ FState_Min_VrelDepart : 0|12@0+ (0.0315,0) [0|0] "m/s" Vector__XXX
+ SG_ FState_Min_Vrel_Oncome : 0|12@0+ (0.0315,0) [0|0] "m/s" Vector__XXX
+ SG_ FState_Min_Azimuth : 0|12@0- (0.025,-50) [0|0] "deg" Vector__XXX
+ SG_ FState_Min_Distance : 0|12@0+ (0.1,0) [0|0] "m" Vector__XXX
+ SG_ FState_Min_NofObj : 0|12@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterState_NofObjectFCfg : 0|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterState_NofClusterFCfg : 0|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterCfg_NoOfObj : 0|12@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterCfg_Min_VrelOncome : 0|12@0+ (0.0315,0) [0|0] "m/s" Vector__XXX
+ SG_ FilterCfg_Min_VrelDepart : 0|12@0+ (0.0315,0) [0|0] "m/s" Vector__XXX
+ SG_ FilterCfg_Min_RCS : 0|12@0+ (0.025,-50) [0|0] "dBm" Vector__XXX
+ SG_ FilterCfg_Min_LIfetime_Copy_1 : 0|12@0+ (0.1,-50) [0|0] "dBm" Vector__XXX
+ SG_ FilterCfg_Min_LIfetime : 0|12@0+ (0.1,-50) [0|0] "dBm" Vector__XXX
+ SG_ New_Signal_115 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1953 Raf_Config_Confirm: 8 Vector__XXX
+ SG_ Raf_Config_Value : 7|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Raf_Config_Param_numb : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Raf_Config_bit_valid : 48|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Raf_Cofig_Act_Bit : 52|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1952 Raf_Config_REQ: 8 Vector__XXX
+ SG_ Raf_Config_Value : 7|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ Raf_Config_Param_numb : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Raf_Config_bit_valid : 48|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Raf_Cofig_Act_Bit : 52|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1548 Obj_2_Quality: 7 Vector__XXX
+ SG_ Obj_VrelLong_rms : 21|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_VrelLat_rms : 16|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_ProbOfExist : 55|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_Orientation_rms : 33|5@0+ (1,0) [0|0] "deg" Vector__XXX
+ SG_ Obj_MeasState : 52|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_ID : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_DistLong_rms : 15|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_DistLat_rms : 10|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_ArelLong_rms : 27|5@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Obj_ArelLat_rms : 38|5@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 516 FilterState_Cfg: 5 Vector__XXX
+ SG_ FState_Type : 7|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FState_Min_X : 12|13@0- (1,0) [0|0] "" Vector__XXX
+ SG_ FState_Max_X : 28|13@0- (1,0) [0|0] "" Vector__XXX
+ SG_ FState_Index : 6|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FState_Active : 2|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 515 FilterState_Header: 2 Vector__XXX
+
+BO_ 1792 SWVersion: 3 Vector__XXX
+ SG_ version_patch : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ version_minor : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ version_major : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 769 InputYaw: 2 RSEND
+ SG_ YawRate : 7|16@0+ (0.01,-327.68) [-327.68|327.67] "deg/s" Vector__XXX
+
+BO_ 768 InputSpeed: 2 RSEND
+ SG_ RSpd_Speed : 4|13@0+ (0.02,0) [0|163.82] "m/s" Vector__XXX
+ SG_ RSpd_SpeedDir : 7|2@0+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 2684354559 __xnon: 8 Vector__XXX
+ SG_ __sigtest17 : 7|17@0- (0.2,0) [0|0] "daf" Vector__XXX
+ SG_ __sigtest31 : 26|31@0- (1,0) [0|0] "d" Vector__XXX
+ SG_ __sigtest8 : 22|8@0+ (1,23) [23|278] "12sfasdf3" Vector__XXX
+
+BO_ 1025 CollDetectRegCfg: 8 Vector__XXX
+ SG_ CollDetRegCfg_regionID : 10|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetregCfg_Point2Y : 50|11@0+ (0.2,-204.6) [0|0] "m" Vector__XXX
+ SG_ CollDetregCfg_Point2X : 47|13@0+ (0.2,-500) [0|0] "m" Vector__XXX
+ SG_ CollDetregCfg_Point1Y : 26|11@0+ (0.2,-204.6) [0|0] "m" Vector__XXX
+ SG_ CollDetregCfg_Point1X : 23|13@0+ (0.2,-500) [0|0] "m" Vector__XXX
+ SG_ CollDetRegCfg_CoordinatesValid : 2|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetRegCfg_Activation : 1|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1550 Obj_4_Warning: 8 Vector__XXX
+ SG_ e_Obj_ID : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ e_Obj_CollDetRegionBitfield : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1024 CollDetectCfg: 8 Vector__XXX
+ SG_ CollDetCfg_WarningReset : 0|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetCfg_MinTime_Valid : 3|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetCfg_MinTime : 15|8@0- (0.1,0) [0|0] "s" Vector__XXX
+ SG_ CollDetCfg_ClearRegions : 7|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetCfg_Activation : 1|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1032 CollDetectState: 8 Vector__XXX
+ SG_ CollDetState_NofRegions : 7|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetState_MinDetectTime : 15|8@0+ (0.1,0) [0|0] "" Vector__XXX
+ SG_ CollDetState_MeasCounter : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ CollDetState_Activation : 1|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 513 RadarState: 8 Vector__XXX
+ SG_ RadarState_SortIndex : 38|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_SensorID : 30|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_SendQualityCfg : 44|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_SendExtInfo : 45|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_RCSThreshold : 60|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_RadarPowerCfg : 25|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_OutputTypeCfg : 43|2@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_NVMwriteStatus : 7|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_NVMreadStatus : 6|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RadarState_MotionRxState : 47|2@0+ (2,0) [0|0] "" Vector__XXX
+ SG_ RadarState_MaxDistanceCFG : 15|10@0+ (2,0) [0|0] "m" Vector__XXX
+ SG_ RadarState_CtrlRelayCfg : 41|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1546 ObjectListState: 4 Vector__XXX
+ SG_ a_Obj_NoOfObj : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ a_Obj_measCounter : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ a_Obj_InterfaceVersion : 31|4@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1549 Obj_3_Extended: 8 Vector__XXX
+ SG_ d_Obj_Width : 63|8@0+ (0.2,0) [0|0] "m" Vector__XXX
+ SG_ d_Obj_OrientationAngel : 39|10@0+ (0.4,-180) [0|0] "deg" Vector__XXX
+ SG_ d_Obj_Length : 55|8@0+ (0.2,0) [0|0] "m" Vector__XXX
+ SG_ d_Obj_ID_ArelLong : 15|11@0+ (0.01,-10) [0|0] "m/s^2" Vector__XXX
+ SG_ d_Obj_ID : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ d_Obj_Class : 26|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ d_Obj_ArelLat : 20|9@0+ (0.01,-2.5) [0|0] "m/s^2" Vector__XXX
+
+BO_ 1547 Obj_1_General: 8 Vector__XXX
+ SG_ b_Obj_VrelLong : 39|10@0+ (0.25,-128) [0|0] "m/s" Vector__XXX
+ SG_ b_Obj_VrelLat : 45|9@0+ (0.25,-64) [0|0] "m/s" Vector__XXX
+ SG_ b_Obj_RCS : 63|8@0+ (0.5,-64) [-64|63.5] "dBm" Vector__XXX
+ SG_ b_obj_ID : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ b_Obj_DynProp : 50|3@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ b_Obj_DistLong : 15|13@0+ (0.2,-500) [0|0] "m" Vector__XXX
+ SG_ b_Obj_DistLat : 18|11@0+ (0.2,-204.6) [0|0] "m" Vector__XXX
+
+BO_ 514 FilterCfg: 5 Vector__XXX
+ SG_ FilterCfg_Valid : 1|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterCfg_Type : 7|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Fcfg_Max : 28|13@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ Fcfg_Min : 12|13@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterCfg_Index : 6|4@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ FilterCfg_Active : 2|1@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 512 RadarConfiguration: 8 ExternalUnit
+ SG_ RadarCfg_RCS_Threshold_Valid : 48|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ RadarCfg_RCS_Threshold : 51|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ RadarCfg_StoreInNVM_valid : 7|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ RadarCfg_SortIndex_valid : 6|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ RadarCfg_SortIndex : 46|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ RadarCfg_StoreInNVM : 47|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_SendExtInfo_valid : 5|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_SendExtInfo : 43|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_CtrlRelay_valid : 40|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_CtrlRelay : 41|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_SendQuality_valid : 4|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_SendQuality : 42|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_MaxDistance_valid : 0|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_RadarPower_valid : 2|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_OutputType_valid : 3|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_SensorID_valid : 1|1@0+ (1,0) [0|1] "" ARS_ISF
+ SG_ RadarCfg_MaxDistance : 15|10@0+ (2,0) [0|2046] "m" ARS_ISF
+ SG_ RadarCfg_RadarPower : 39|3@0+ (1,0) [0|7] "" ARS_ISF
+ SG_ RadarCfg_OutputType : 36|2@0+ (1,0) [0|2] "" ARS_ISF
+ SG_ RadarCfg_SensorID : 34|3@0+ (1,0) [0|7] "" ARS_ISF
+
+
+CM_ BO_ 1873  "��������� � ����������������� � �������";
+CM_ BO_ 672  "Message holds kinematic information.";
+CM_ BO_ 273  "Wheeler driver state message";
+CM_ BO_ 3221225472  "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+
+CM_ SG_ 112 WH_R_Position "Requested position for wheel";
+CM_ SG_ 112 WH_R_Enable "Enable request bit 1 for active";
+CM_ SG_ 1509 ANSCU_RRW "�������� �������� ������� ������� ������";
+CM_ SG_ 1509 ANSCU_RFW "�������� �������� ��������� ������� ������";
+CM_ SG_ 1509 ANSCU_LRW "�������� �������� ������� ������ ������";
+CM_ SG_ 1509 ANSCU_LFW "�������� �������� ��������� ������ ������";
+CM_ SG_ 1873 ANSCU_ODERR "��� ������ �������������� �������";
+CM_ SG_ 1873 ANSCU_GPSERR "��� ������ ���";
+CM_ SG_ 1873 ANSCU_INSERR "��� ������ ���";
+CM_ SG_ 1873 ANSCU_KAC " ������ � �����������������, �������� ������������ �������, ������� ���������������� ��� ������ ������� KAC-���������";
+CM_ SG_ 1872 ANSCU_RRW "�������� �������� ������� ������� ������";
+CM_ SG_ 1872 ANSCU_RFW "�������� �������� ��������� ������� ������";
+CM_ SG_ 1872 ANSCU_LRW "�������� �������� ������� ������ ������";
+CM_ SG_ 1872 ANSCU_LFW "�������� �������� ��������� ������ ������";
+CM_ SG_ 672 YRS_YawIns "Current YAW rate from INS system.";
+CM_ SG_ 672 YRS_YawOdom "Current YAW rate from ODOM navigation system.";
+CM_ SG_ 273 WH_1_Enabled "CAN control Active now";
+CM_ SG_ 273 WH_1_Position "Current wheel position";
+CM_ SG_ 273 WH_1_Error "Error status";
+CM_ SG_ 273 WH_1_Current "DC motor current";
+CM_ SG_ 513 RadarState_SortIndex "0x0: no sorting
+0x1: sorted by range
+0x2: sorted by RCS";
+CM_ SG_ 513 RadarState_RCSThreshold "0x0 Standard
+0x1 High sensitivity";
+CM_ SG_ 513 RadarState_RadarPowerCfg "0x0: Standard
+0x1: -3dB Tx gain
+0x2: -6dB Tx gain
+0x3: -9dB Tx gain";
+CM_ SG_ 513 RadarState_OutputTypeCfg "0x0: none
+0x1: send objects
+0x2: send clusters";
+CM_ SG_ 513 RadarState_MotionRxState "$0: input ok
+$1: speed missing
+$2: yaw rate missing
+$3: speed and yaw rate missing";
+CM_ SG_ 1549 d_Obj_Class "0x0: point
+0x1: car
+0x2: truck
+0x3: pedestrian
+0x4: motorcycle
+0x5: bicycle
+0x6: wide
+0x7: reserved";
+CM_ SG_ 1547 b_Obj_DynProp "0x0: moving
+0x1: stationary
+0x2: oncoming
+0x3: stationary candidate
+0x4: unknown
+0x5: crossing stationary
+0x6: crossing moving
+0x7: stopped";
+CM_ SG_ 512 RadarCfg_SortIndex "0x0: no sorting
+0x1: sorted by range
+0x2: sorted by RCS";
+CM_ SG_ 512 RadarCfg_MaxDistance "(200m - 250 m are supported in the standard version)";
+CM_ SG_ 512 RadarCfg_RadarPower "0x0: Standard
+0x1: -3dB Tx gain
+0x2: -6dB Tx gain
+0x3: -9dB Tx gain";
+CM_ SG_ 512 RadarCfg_OutputType "0x0: none
+0x1: send objects
+0x2: send clusters";
+
+
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 10000;
+BA_DEF_ BO_ "GenMsgSendType" ENUM  "cyclic","spontaneous","cyclicAndSpontaneous","vector_leerstring";
+BA_DEF_ BU_ "CANoeDrift" INT 0 0;
+BA_DEF_ BU_ "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_ "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_ "CANoeStartDelay" INT 0 0;
+BA_DEF_ BU_ "ECU" STRING;
+BA_DEF_ BU_ "NodeLayerModules" STRING;
+BA_DEF_ "BusType" STRING;
+BA_DEF_DEF_ "BusType" "CAN";
+BA_DEF_DEF_ "CANoeDrift" 0;
+BA_DEF_DEF_ "CANoeJitterMax" 0;
+BA_DEF_DEF_ "CANoeJitterMin" 0;
+BA_DEF_DEF_ "CANoeStartDelay" 0;
+BA_DEF_DEF_ "ECU" "";
+BA_DEF_DEF_ "GenMsgCycleTime" 100;
+BA_DEF_DEF_ "GenMsgSendType" "cyclic";
+BA_DEF_DEF_ "NodeLayerModules" "";
+
+
+BA_ "GenMsgCycleTime" BO_ 1520 25;
+BA_ "GenMsgCycleTime" BO_ 112 50;
+BA_ "GenMsgCycleTime" BO_ 672 50;
+
+
+VAL_ 672 YRS_YawOdomStat 0 "Not Valid" 1 "Valid" 2 "Undefined" 3 "Undefined";
+VAL_ 672 YRS_YawInsStat 0 "Not Valid" 1 "Valid" 2 "Undefined" 3 "Undefined";
