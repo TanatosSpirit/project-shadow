@@ -1,5 +1,6 @@
 from lib.reader import read_can_log
 from lib.simulation import sim
+from lib.shadow import shadow
 
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
@@ -19,30 +20,46 @@ class Visualizer:
 
     def show(self):
 
-        time_body, PATH1_Speed, time_radar, speedInfo, speed_RRW = sim(self.data)
+        # vehicle_state = {
+        #     'time': [0],
+        #     'delta_time': [0],
+        #     'delta_path': [0],
+        #     'delta_course': [0],
+        #     'course': [0],
+        #     'path': [0],
+        #     'Global_position_X': [0],
+        #     'Global_position_Y': [0],
+        #     'GradM': 10
+        # }
+        vehicle_state = sim(self.data)
 
-        fig_graph, (ax1, ax2, ax3) = plt.subplots(3, 1, sharex='all', sharey='all', figsize=(8, 8))
+        fig_graph, ax1  = plt.subplots(1, 1, sharex='all', sharey='all', figsize=(9, 9))
 
-        y_max = max(speedInfo) if max(speedInfo) > max(speed_RRW) else max(speed_RRW)
-        y_min = -1
+        time = vehicle_state['time']
+        Global_position_X = vehicle_state['Global_position_X']
+        Global_position_Y = vehicle_state['Global_position_Y']
 
-        ax1.set_xlim(0, time_body[-1])
+        # y_max = max(speed_RRW) if max(speed_RRW) > max(speed_LRW) else max(speed_LRW)
+        y_min = min(Global_position_Y)
+        y_max = max(Global_position_Y)
+
+        x_min = min(Global_position_X)
+        x_max = max(Global_position_X)
+
+        ax1.set_xlim(x_min, x_max)
         ax1.set_ylim(y_min, y_max)
         ax1.set_title('Graph 1')
-        ax1.set_ylabel('PATH1_Speed (ms)')
-        ax1.plot(time_body, PATH1_Speed, color = 'blue')
+        ax1.set_ylabel('speed_LRW (ms)')
+        ax1.plot(Global_position_X, Global_position_Y, color = 'blue')
 
-        ax2.set_xlim(0, time_radar[-1])
-        ax2.set_ylim(y_min, y_max)
-        ax2.set_title('Graph 1')
-        ax2.set_ylabel('speedInfo (ms)')
-        ax2.plot(time_radar, speedInfo, color='blue')
+        # y_min = min(delta_time)
+        # y_max = max(delta_time)
+        # ax2.set_xlim(0, time[-1])
+        # ax2.set_ylim(y_min, y_max)
+        # ax2.set_title('Graph 1')
+        # ax2.set_ylabel('speed_RRW (ms)')
+        # ax2.plot(time, delta_time, color='blue')
 
-        ax3.set_xlim(0, time_radar[-1])
-        ax3.set_ylim(y_min, y_max)
-        ax3.set_title('Graph 1')
-        ax3.set_ylabel('speedInfo (ms)')
-        ax3.plot(time_radar, speed_RRW, color='blue')
 
         if self.settings['Anim']:
             colorRCSmin = self.settings['colorRCSmin']
@@ -90,6 +107,7 @@ class Visualizer:
 
                 return (objects, time_text, spd_text) + tuple(idAnnot)
 
+            data = self.data
             def animate(i):
 
                 pose_obj, rcs_value, id_obj = shadow(data[i])
@@ -102,7 +120,7 @@ class Visualizer:
 
                 # spdAnnot.set_text('Speed = {:.2f} m/s'.format(0))
                 # timeAnnot.set_text('Time = {:.2f} s'.format(data[i]['Time Stamp']))
-                time_text.set_text('Time = {:.2f} s'.format(data[i]['Time Stamp']))
+                time_text.set_text('Time = {:.2f} s'.format(self.data[i]['Time Stamp']))
                 spd_text.set_text('Speed = {:.2f} m/s'.format(0))
 
 
@@ -116,7 +134,7 @@ class Visualizer:
 
                 return (objects, time_text, spd_text) + tuple(idAnnot)
 
-            ani = animation.FuncAnimation(fig, animate, init_func=init, interval=10, frames=len(data), blit=True)
+            ani = animation.FuncAnimation(fig, animate, init_func=init, interval=10, frames=len(self.data), blit=True)
 
             # ani.save('basic_animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
 

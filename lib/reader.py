@@ -49,7 +49,8 @@ def read_can_log(path, dbc):
                 instaObjList = {'Time Stamp': absTime,
                                 'Source'    : 'Radar'}
 
-                msgDecoded = matrix.decode(msg.arbitration_id, msg.data, False)
+                # msgDecoded = matrix.decode(msg.arbitration_id, msg.data, False)
+                msgDecoded = matrix.decode(msg.arbitration_id, msg.data)
                 for signal, value in msgDecoded.items():
                     instaObjList[signal] = value
 
@@ -62,7 +63,8 @@ def read_can_log(path, dbc):
                     objCount += 1
                     obj = {}
 
-                    msgDecoded = matrix.decode(msg.arbitration_id, msg.data, False)
+                    # msgDecoded = matrix.decode(msg.arbitration_id, msg.data, False)
+                    msgDecoded = matrix.decode(msg.arbitration_id, msg.data)
                     for signal, value in msgDecoded.items():
                         if signal != 'Time Stamp':
                             obj[signal] = value
@@ -74,7 +76,8 @@ def read_can_log(path, dbc):
                   msgFrame.name == 'Obj_4_Warning'):
 
                 if objCount >= 0:  # Prevent bug if log starts from messages above
-                    msgDecoded = matrix.decode(msg.arbitration_id, msg.data, False)
+                    # msgDecoded = matrix.decode(msg.arbitration_id, msg.data, False)
+                    msgDecoded = matrix.decode(msg.arbitration_id, msg.data)
                     # Search necessary Obj_ID
                     for obj in logData[objListPose]['Obj_List']:
                         if msgDecoded['Obj_ID'] == obj['Obj_ID']:
@@ -136,6 +139,27 @@ def read_can_log(path, dbc):
                 instaObjList['ANSCU_RFW'] = ANSCU_RFW
                 instaObjList['ANSCU_LRW'] = ANSCU_LRW
                 instaObjList['ANSCU_RRW'] = ANSCU_RRW
+
+                logData.append(instaObjList)
+
+            elif msgFrame.name == 'WHEEL_1':
+
+                lenLogData += 1
+
+                instaObjList = {'Time Stamp': absTime,
+                                'Source': 'WHEEL_1'}
+
+                WH_1_Position = 1 * np.int16((((msg.data[1] & 0x03) << 8) | (msg.data[0] & 0xFF)) - 512)
+                WH_1_Error = np.uint8(((msg.data[1] >> 6) & 0x01))
+                WH_1_Enabled = np.uint8(((msg.data[1] >> 7) & 0x01))
+                WH_1_Current = 0.25 * np.uint8((msg.data[2] & 0xFF))
+                WH_1_Temperature = 1 * np.int16(((msg.data[3] & 0xFF)) - 40)
+
+                instaObjList['WH_1_Position'] = WH_1_Position
+                instaObjList['WH_1_Error'] = WH_1_Error
+                instaObjList['WH_1_Enabled'] = WH_1_Enabled
+                instaObjList['WH_1_Current'] = WH_1_Current
+                instaObjList['WH_1_Temperature'] = WH_1_Temperature
 
                 logData.append(instaObjList)
 

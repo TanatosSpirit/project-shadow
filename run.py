@@ -1,5 +1,5 @@
 from conf import settings
-from visualizer import Visualizer
+from lib.visualizer import Visualizer
 
 
 viz = Visualizer(settings)

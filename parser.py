@@ -7,9 +7,9 @@ Created on Fri Feb  1 15:06:38 2019
 import matplotlib.pyplot as plt
 import numpy as np
 
-from calculation_of_target_state import *
-from config_log import *
-from matrix_operations import matrix
+from lib.calculation_of_target_state import *
+from lib.config_log import *
+from lib.matrix_operations import matrix
 
 
 # Инициализация фильтра Калмана
@@ -239,7 +239,7 @@ def main(data_log):
 
 
 
-            if data[i,target_handle_col] == 1 and len(target_list_global_pose_x) < 7000:
+            if data[i,target_handle_col] == 0 and len(target_list_global_pose_x) < 7000:
                 target_list_global_pose_x.append(target_world_pose_x)
                 target_list_global_pose_y.append(target_world_pose_y)
 
